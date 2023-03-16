@@ -1,3 +1,6 @@
+@import "colors";
+@import "nav";
+
 /* Variables */
 $headfont: 'Sacramento', 'cursive';
 $bodyfont: Arial, Helvetica, Sans-Serif;
@@ -18,7 +21,7 @@ $bodyfont: Arial, Helvetica, Sans-Serif;
     transform: $text5;
 }
 
-@mixin button {
+%button {
     background-color: $outsidecolor;
     border: none;
     color: $middlecolor;
@@ -32,14 +35,10 @@ $bodyfont: Arial, Helvetica, Sans-Serif;
     transform: translate(-50%, -120%);
 }
 
-@import "colors";
-
 body {
     background-color: $outsidecolor;
     margin-left: 40px;
 
-    @import "nav";
-    
     /* Nest Main */
     main {
         width: 1350px;
@@ -72,7 +71,7 @@ body {
             }
             // Mixin or Extend for button
             button {
-                @include button;
+                @extend %button;
             }
         }
         #intro-image {
