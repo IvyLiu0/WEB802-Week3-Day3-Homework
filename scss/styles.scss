@@ -1,0 +1,97 @@
+/* Variables */
+$headfont: 'Sacramento', 'cursive';
+$bodyfont: Arial, Helvetica, Sans-Serif;
+
+@mixin style ($style1, $style2, $style3, $style4, $style5) {
+    background-color: $style1;
+    height: $style2;
+    width: $style3;
+    position: $style4;
+    margin: $style5;
+}
+
+@mixin text ($text1, $text2, $text3, $text4, $text5) {
+    position: $text1;
+    text-align: $text2;
+    top: $text3;
+    left: $text4;
+    transform: $text5;
+}
+
+@mixin button {
+    background-color: $outsidecolor;
+    border: none;
+    color: $middlecolor;
+    font-family: $bodyfont;
+    height: 40px;
+    width: 120px;
+    position: absolute;
+    text-align: center;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -120%);
+}
+
+@import "colors";
+
+body {
+    background-color: $outsidecolor;
+    margin-left: 40px;
+
+    @import "nav";
+    
+    /* Nest Main */
+    main {
+        width: 1350px;
+        min-height:535px;
+        background-color: $middlecolor;
+        display: flex;
+
+        #intro-text {
+            @include style($insidecolor,500px, 40%, relative, 20px);
+            float: left;
+            width: 650px;
+            margin-right: 0px;
+
+            span {
+                font-family: $headfont;
+                color: $textcolor;
+                font-size: 30px;
+                @include text (absolute, center, 35%, 50%, translate(-45%, -120%));
+            }
+            h3 {
+                font-family: $bodyfont;
+                color: $textcolor;
+                font-size: 30px;
+                @include text (absolute, center, 50%, 40%, translate(-35%, -120%));
+            }
+            p {
+                font-family: $bodyfont;
+                color: $textcolor;
+                @include text (absolute, center, 60%, 0%, translate(6%, -120%));
+            }
+            // Mixin or Extend for button
+            button {
+                @include button;
+            }
+        }
+        #intro-image {
+            @include style(none, 500px, 60%, relative, 20px);
+            float: left;
+            margin-left: 0px;
+
+            img {
+                height: 500px;
+            }
+        }
+    }
+
+    /*footer*/
+    footer{
+        font-family: $bodyfont;
+        color: $textcolor;
+        margin-top: 30px;
+        margin-left: 60px;
+    }
+}
+
